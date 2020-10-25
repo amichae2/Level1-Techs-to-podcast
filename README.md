@@ -1,8 +1,8 @@
-This is a simple python script to download the Level1 News (https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ) video as a podcast. The instructions will also show you how to share the podcast with your phone and how to automate the entire process so you don't even hav to press a button... on linux ;)
+This is a simple python script to download the Level1 News (https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ) video as a podcast. The instructions will also show you how to share the podcast with your phone and how to automate the entire process so you don't even have to press a button... on linux ;)
 
 Installation:
 
-1. Open youtube_to_phone in your editor of choice
+1. Open the repo in your editor of choice
 2. Open main.py
 3. Enter the absolute path to my_paths.ini into the function config.read(" ") between the quotes
 4. Install chromedriver for Selenium
