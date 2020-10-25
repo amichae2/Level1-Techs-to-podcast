@@ -24,8 +24,6 @@ driver = webdriver.Chrome(executable_path=chromeDriverPath, options=chrome_optio
 driver.get("https://www.youtube.com/c/Level1Techs/videos")
 level1TechsURLTitle = driver.find_element_by_partial_link_text("Level1 News")
 level1TechsURL = level1TechsURLTitle.get_attribute("href")
-print(level1TechsURL)
-print(level1TechsURLTitle)
 
 """check video date, convert to string and concatenate"""
 level1TechsURLTitleString = str(level1TechsURLTitle.text)
@@ -38,7 +36,6 @@ if len(matches) > 0:
 datePodString = str(datePod)
 datePodStringCon = datePodString.split(" ", 1)
 datePodStringConSub = datePodStringCon[0]
-print(datePodStringConSub)
 
 """check if podcasts is already downloaded"""
 previousPodsR = open(previousPodPath, "r")
@@ -46,7 +43,6 @@ lastPod = previousPodsR.readline()
 if str(lastPod) == level1TechsURLTitleString:
     driver.quit()
     previousPodsR.close()
-    print("it got here 0")
     sys.exit()
 elif str(lastPod) != level1TechsURLTitleString:
     previousPodsR.close()
@@ -57,7 +53,6 @@ elif str(lastPod) != level1TechsURLTitleString:
 """get current date and convert to string"""
 date = date.today()
 dateString = str(date)
-print("it got here")
 
 """quit selenium"""
 driver.quit()
