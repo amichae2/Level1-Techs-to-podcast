@@ -55,4 +55,6 @@ How to make this script run in the background on linux:
 6. Paste the crontab line into nano, the text editor opened in your console after running crontab -e, press Ctrl o, press Ctrl x)
 7. Make sure your computer is on at atleast one of the times you told the cron job to run
 
+If you want to play in background on your phone just move the file to a local directory on your phone, download VLC and play it from VLC
+
 CONGRATULATIONS, YOU NOW HAVE LEVEL1 NEWS BEING DOWNLOADED DIRECTLY TO YOUR PHONE AUTOMATICALLY
