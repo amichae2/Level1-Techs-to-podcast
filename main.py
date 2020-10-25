@@ -65,13 +65,15 @@ if dateString == datePodStringConSub:
 
 """delete videos past certain date"""
 daysBeforeDeletion = 3
-onlyfiles = [f for f in listdir(podcastOut) if isfile(join(
+onlyFiles = [f for f in listdir(podcastOut) if isfile(join(
     podcastOut, f))]
 deletion_date = date.today() - timedelta(daysBeforeDeletion)
 iterator = 0
-for file in onlyfiles:
-    fileDate = list(datefinder.find_dates(onlyfiles[iterator]))
-    if fileDate[0].date() < deletion_date:
-        remove(podcastOut + onlyfiles[iterator])
-    iterator += 1
-
+for file in onlyFiles:
+    fileDate = list(datefinder.find_dates(onlyFiles[iterator]))
+    if not fileDate:
+        break
+    else:
+        if fileDate[0].date() < deletion_date:
+            remove(podcastOut + onlyFiles[iterator])
+        iterator += 1
