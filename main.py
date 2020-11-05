@@ -25,7 +25,7 @@ driver.get("https://www.youtube.com/c/Level1Techs/videos")
 level1TechsURLTitle = driver.find_element_by_partial_link_text("Level1 News")
 level1TechsURL = level1TechsURLTitle.get_attribute("href")
 
-"""check video date, convert to string and concatenate"""
+"""check video date, convert to string and split"""
 level1TechsURLTitleString = str(level1TechsURLTitle.text)
 split_string = level1TechsURLTitleString.split(":", 1)
 substring = split_string[0]
@@ -34,8 +34,8 @@ datePod = None
 if len(matches) > 0:
     datePod = matches[0]
 datePodString = str(datePod)
-datePodStringCon = datePodString.split(" ", 1)
-datePodStringConSub = datePodStringCon[0]
+datePodStringSplt = datePodString.split(" ", 1)
+datePodStringSpltSub = datePodStringSplt[0]
 
 """check if podcasts is already downloaded"""
 previousPodsR = open(previousPodPath, "r")
@@ -59,7 +59,7 @@ driver.quit()
 
 """download and name audio file"""
 download = None
-if dateString == datePodStringConSub:
+if dateString == datePodStringSpltSub:
     download = YouTube(str(level1TechsURL)).streams.get_audio_only().download(
         output_path=podcastOut, filename=level1TechsURLTitleString)
 
