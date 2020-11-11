@@ -50,30 +50,30 @@ elif str(lastPod) != level1TechsURLTitleString:
     previousPodsW.write(level1TechsURLTitleString)
     previousPodsW.close()
 
-"""get current date and convert to string"""
-date = date.today()
-dateString = str(date)
+    """get current date and convert to string"""
+    date = date.today()
+    dateString = str(date)
 
-"""quit selenium"""
-driver.quit()
+    """quit selenium"""
+    driver.quit()
 
-"""download and name audio file"""
-download = None
-if dateString == datePodStringSpltSub:
-    download = YouTube(str(level1TechsURL)).streams.get_audio_only().download(
-        output_path=podcastOut, filename=level1TechsURLTitleString)
+    """download and name audio file"""
+    download = None
+    if dateString == datePodStringSpltSub:
+        download = YouTube(str(level1TechsURL)).streams.get_audio_only().download(
+            output_path=podcastOut, filename=level1TechsURLTitleString)
 
-"""delete videos past certain date"""
-daysBeforeDeletion = 3
-onlyFiles = [f for f in listdir(podcastOut) if isfile(join(
-    podcastOut, f))]
-deletion_date = date.today() - timedelta(daysBeforeDeletion)
-iterator = 0
-for file in onlyFiles:
-    fileDate = list(datefinder.find_dates(onlyFiles[iterator]))
-    if not fileDate:
-        break
-    else:
-        if fileDate[0].date() < deletion_date:
-            remove(podcastOut + onlyFiles[iterator])
-        iterator += 1
+    """delete videos past certain date"""
+    daysBeforeDeletion = 3
+    onlyFiles = [f for f in listdir(podcastOut) if isfile(join(
+        podcastOut, f))]
+    deletion_date = date.today() - timedelta(daysBeforeDeletion)
+    iterator = 0
+    for file in onlyFiles:
+        fileDate = list(datefinder.find_dates(onlyFiles[iterator]))
+        if not fileDate:
+            break
+        else:
+            if fileDate[0].date() < deletion_date:
+                remove(podcastOut + onlyFiles[iterator])
+            iterator += 1
